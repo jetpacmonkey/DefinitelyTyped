@@ -415,7 +415,7 @@ _.isNaN(undefined);
 _.isNull(null);
 _.isNull(undefined);
 
-_.isUndefined((<any>window).missingVariable);
+_.isUndefined((window as any).missingVariable);
 
 //////////////////////////////////// User Defined Guard tests
 
@@ -468,7 +468,7 @@ _.mixin({
 		return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
 	}
 });
-(<any>_("fabio")).capitalize();
+(_("fabio") as any).capitalize();
 
 _.uniqueId('contact_');
 
