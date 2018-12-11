@@ -2,6 +2,7 @@
 // Project: http://underscorejs.org/
 // Definitions by: Boris Yankov <https://github.com/borisyankov>, Josh Baldwin <https://github.com/jbaldwin>, Christopher Currens <https://github.com/ccurrens>, Cassey Lottman <https://github.com/clottman>, Ard Timmerman <https://github.com/confususs>, Jeremy Tice <https://github.com/jetpacmonkey>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+// TypeScript Version: 2.8
 
 declare var _: _.UnderscoreStatic;
 export = _;
