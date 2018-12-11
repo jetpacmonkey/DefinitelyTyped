@@ -1,6 +1,6 @@
 // Type definitions for Underscore 1.8
 // Project: http://underscorejs.org/
-// Definitions by: Boris Yankov <https://github.com/borisyankov>, Josh Baldwin <https://github.com/jbaldwin>, Christopher Currens <https://github.com/ccurrens>, Cassey Lottman <https://github.com/clottman>, Ard Timmerman <https://github.com/confususs>
+// Definitions by: Boris Yankov <https://github.com/borisyankov>, Josh Baldwin <https://github.com/jbaldwin>, Christopher Currens <https://github.com/ccurrens>, Cassey Lottman <https://github.com/clottman>, Ard Timmerman <https://github.com/confususs>, Jeremy Tice <https://github.com/jetpacmonkey>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare var _: _.UnderscoreStatic;
@@ -3695,6 +3695,20 @@ declare module _ {
         * @keys The key/value pairs to keep on `object`.
         * @return Copy of `object` with only the `keys` properties.
         **/
+        pick<T, Ks extends (keyof T | string)[]>(
+            object: T,
+            ...keys: Ks): Pick<T, Extract<Ks[number], keyof T>>
+
+        /**
+        * @see _.pick
+        **/
+        pick<T, Ks extends (keyof T | string)[]>(
+            object: T,
+            keys: Ks): Pick<T, Extract<Ks[number], keyof T>>
+
+        /**
+        * @see _.pick
+        **/
         pick(
             object: any,
             ...keys: any[]): any;
@@ -3711,6 +3725,20 @@ declare module _ {
         * @param object Object to strip unwanted key/value pairs.
         * @param keys The key/value pairs to remove on `object`.
         * @return Copy of `object` without the `keys` properties.
+        **/
+        omit<T, Ks extends (keyof T | string)[]>(
+            object: T,
+            ...keys: Ks): { [K in Exclude<keyof T, Ks[number]>]: T[K] };
+
+        /**
+        * @see _.omit
+        **/
+        omit<T, Ks extends (keyof T | string)[]>(
+            object: T,
+            keys: Ks): { [K in Exclude<keyof T, Ks[number]>]: T[K] };
+
+        /**
+        * @see _.omit
         **/
         omit(
             object: any,

@@ -323,10 +323,28 @@ _.functions(_);
 _.extend({ name: 'moe' }, { age: 50 });
 _.extendOwn({ name: 'moe'}, { age: 50 });
 _.assign({ name: 'moe'}, { age: 50 });
-_.pick({ name: 'moe', age: 50, userid: 'moe1' }, 'name', 'age');
-_.omit({ name: 'moe', age: 50, userid: 'moe1' }, 'name');
-_.omit({ name: 'moe', age: 50, userid: 'moe1' }, 'name', 'age');
-_.omit({ name: 'moe', age: 50, userid: 'moe1' }, ['name', 'age']);
+
+{
+    const moe: { name: string, age: number, userid: string} = { name: 'moe', age: 50, userid: 'moe1' };
+    _.pick(moe, 'name', 'age');
+
+    let result: { name: string, age: number };
+
+    result = _.pick(moe, 'name', 'age');
+    result = _.pick(moe, ['name', 'age']);
+    result = _.pick(moe, ['name', 'age', 'foo']);
+}
+
+{
+    _.omit({ name: 'moe', age: 50, userid: 'moe1' }, 'name');
+    _.omit({ name: 'moe', age: 50, userid: 'moe1' }, 'name', 'age');
+    _.omit({ name: 'moe', age: 50, userid: 'moe1' }, ['name', 'age']);
+
+    let result: { userid: string };
+    result = _.omit({ name: 'moe', age: 50, userid: 'moe1' }, 'name', 'age');
+    result = _.omit({ name: 'moe', age: 50, userid: 'moe1' }, ['name', 'age']);
+    result = _.omit({ name: 'moe', age: 50, userid: 'moe1' }, ['name', 'age', 'foo']);
+}
 
 _.mapObject({ a: 1, b: 2 }, val => val * 2) === _.mapObject({ a: 2, b: 4 }, _.identity);
 _.mapObject({ a: 1, b: 2 }, (val, key, o) => o[key] * 2) === _.mapObject({ a: 2, b: 4}, _.identity);
